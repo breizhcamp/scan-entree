@@ -1,5 +1,15 @@
 package com.breizhcamp.ticket
 
-/**
- * Created by zvtk2773 on 20/03/2018.
- */
+import java.util.*
+
+
+object AppConfig {
+
+    val WEBSERVICE_ENTRYPOINT = "webservice_entrypoint"
+
+    val CODE = "code"
+
+    val SHARE_PREFERENCIES_NAME = "scan_ticket"
+
+
+}

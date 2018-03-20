@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.SparseArray
 import android.view.MenuItem
 import android.widget.Toast
+import com.breizhcamp.ticket.AppConfig
 import com.breizhcamp.ticket.R
 
 import com.google.android.gms.vision.barcode.Barcode
@@ -14,7 +15,7 @@ import info.androidhive.barcode.BarcodeReader
 
 class ScanActivity : AppCompatActivity(), BarcodeReader.BarcodeReaderListener {
 
-    internal var barcodeReader: BarcodeReader? = null
+    private var barcodeReader: BarcodeReader? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,7 @@ class ScanActivity : AppCompatActivity(), BarcodeReader.BarcodeReaderListener {
 
         // ticket details activity by passing barcode
         val intent = Intent(this@ScanActivity, TicketResultActivity::class.java)
-        intent.putExtra("code", barcode.displayValue)
+        intent.putExtra(AppConfig.CODE, barcode.displayValue)
         startActivity(intent)
     }
 
