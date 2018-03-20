@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/txt_error"
+        android:id="@+id/errorScanTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
@@ -22,7 +22,7 @@
         android:visibility="gone" />
 
     <com.breizhcamp.ticket.view.TicketView
-        android:id="@+id/layout_ticket"
+        android:id="@+id/ticketView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/dimen_20"
@@ -39,25 +39,85 @@
             android:id="@+id/type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/dimen_5"
             android:fontFamily="@font/bttf"
             android:paddingLeft="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
             android:paddingTop="@dimen/activity_margin"
             android:textAllCaps="true"
-            android:textSize="@dimen/lbl_directory" />
+            android:textSize="@dimen/lbl_type" />
 
-        <TextView
-            android:id="@+id/name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="#111"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textSize="@dimen/lbl_movie_name" />
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="@dimen/dimen_5"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#111"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/lbl_name"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="#111"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/lbl_name"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                >
+
+                <TextView
+                    android:id="@+id/desk"
+                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/bttf"
+                    android:paddingRight="@dimen/dimen_5"
+                    android:paddingTop="4dp"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/lbl_name"
+                    android:layout_weight="2"
+                    android:textAlignment="center"
+                    />
+
+                <TextView
+                    android:id="@+id/identifier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bttf"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/lbl_identifier" />
+            </LinearLayout>
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/ticket"
@@ -65,65 +125,30 @@
             android:layout_height="@dimen/img_poster_height"
             android:layout_marginBottom="@dimen/activity_margin"
             android:layout_marginTop="@dimen/activity_margin"
-
             android:src="@drawable/breizh_to_the_camp" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/checkin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="14dp"
+            android:gravity="center_horizontal"
+           />
+
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:fontFamily="@font/bttf"
             android:paddingLeft="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="@string/lbl_office"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:id="@+id/desk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@color/lbl_value"
-                    android:textSize="14dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="@string/lbl_duration"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:id="@+id/duration"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:inputType="textCapSentences"
-                    android:textColor="@color/lbl_value"
-                    android:textSize="14dp" />
-            </LinearLayout>
-
-        </LinearLayout>
+            android:layout_marginTop="@dimen/dimen_20"
+            android:textAllCaps="true"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/lbl_duration"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,7 +168,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="@dimen/dimen_5"
                     android:fontFamily="sans-serif-condensed"
                     android:text="@string/lbl_company"
                     android:textSize="12dp" />
@@ -166,7 +191,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="@dimen/dimen_5"
                     android:fontFamily="sans-serif-condensed"
                     android:text="@string/mail"
                     android:textSize="12dp" />

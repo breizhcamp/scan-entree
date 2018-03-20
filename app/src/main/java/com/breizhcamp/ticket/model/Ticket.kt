@@ -27,4 +27,12 @@ class Ticket {
     var company: String? = null
         internal set
 
+    var checkin: String? = null
+        internal set
+
+    @SerializedName("id")
+    var identifier: String? = null
+        internal set
+
+
 }

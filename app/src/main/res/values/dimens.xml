@@ -3,8 +3,13 @@
     <dimen name="dimen_20">20dp</dimen>
     <dimen name="dimen_10">10dp</dimen>
     <dimen name="activity_margin">16dp</dimen>
-    <dimen name="lbl_directory">20dp</dimen>
-    <dimen name="lbl_movie_name">20dp</dimen>
-    <dimen name="img_poster_height">220dp</dimen>
+    <dimen name="lbl_type">18dp</dimen>
+    <dimen name="lbl_name">27dp</dimen>
+    <dimen name="img_poster_height">120dp</dimen>
     <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="lbl_identifier">12dp</dimen>
+    <dimen name="lbl_duration">12dp</dimen>
+
+
 </resources>

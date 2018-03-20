@@ -1,16 +1,19 @@
 package com.breizhcamp.ticket.activities
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.TextUtils
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 
+import com.breizhcamp.ticket.utils.checkinDay
+import com.breizhcamp.ticket.utils.daysOfWeek
 
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
@@ -18,27 +21,18 @@ import com.google.gson.JsonSyntaxException
 import org.json.JSONObject
 import org.json.JSONArray
 
-
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
+import com.breizhcamp.ticket.AppConfig
 import com.breizhcamp.ticket.R
 import com.breizhcamp.ticket.additions.CustomRequest
 import com.breizhcamp.ticket.model.Ticket
 import com.breizhcamp.ticket.utils.RequestUtils
-import com.breizhcamp.ticket.view.TicketView
+import kotlinx.android.synthetic.main.content_ticket_details.*
 
 class TicketResultActivity : AppCompatActivity() {
 
-    private var txtName: TextView? = null
-    private var txtDesk: TextView? = null
-    private var txtType: TextView? = null
-    private var txtDuration: TextView? = null
-    private var txtCompany: TextView? = null
-    private var txtMail: TextView? = null
-    private var txtError: TextView? = null
-    private var progressBar: ProgressBar? = null
-    private var ticketView: TicketView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,18 +42,7 @@ class TicketResultActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        txtName = findViewById(R.id.name)
-        txtType = findViewById(R.id.type)
-        txtDesk = findViewById(R.id.desk)
-        txtMail = findViewById(R.id.mail)
-        txtCompany = findViewById(R.id.company)
-        txtDuration = findViewById(R.id.duration)
-        txtError = findViewById(R.id.txt_error)
-        ticketView = findViewById(R.id.layout_ticket)
-        progressBar = findViewById(R.id.progressBar)
-
-
-        val barcode = getIntent().getStringExtra("code")
+        val barcode = intent.getStringExtra(AppConfig.CODE)
 
         // close the activity in case of empty barcode
         if (TextUtils.isEmpty(barcode)) {
@@ -84,7 +67,8 @@ class TicketResultActivity : AppCompatActivity() {
 
         val method = Request.Method.POST
 
-        val url = this.resources.getString(R.string.webServicesEntryPoint)
+        val preferences = getSharedPreferences(AppConfig.SHARE_PREFERENCIES_NAME, Context.MODE_PRIVATE)
+        val url = preferences.getString(AppConfig.WEBSERVICE_ENTRYPOINT, this.resources.getString(R.string.webServicesEntryPoint))
 
         val jsonArrayRequest = CustomRequest(method, url, params,
                 Response.Listener { response ->
@@ -93,8 +77,7 @@ class TicketResultActivity : AppCompatActivity() {
 
                     // check for success status : no more 1 entry
                     if (!response.isNull(0) && response.length() < 2) {
-                        // received movie response
-
+                        // received ticket response
                         renderTicket(response)
                     } else {
                         // no ticket found
@@ -116,8 +99,8 @@ class TicketResultActivity : AppCompatActivity() {
 
 
     private fun showNoTicket() {
-        txtError!!.visibility = View.VISIBLE
-        ticketView!!.visibility = View.GONE
+        errorScanTextView.visibility = View.VISIBLE
+        ticketView.visibility = View.GONE
         progressBar!!.visibility = View.GONE
     }
 
@@ -134,18 +117,7 @@ class TicketResultActivity : AppCompatActivity() {
 
             if (ticket != null) {
 
-                val ownerName = StringBuilder()
-                ownerName.append(ticket.lastName).append(" ").append(ticket.firstName)
-                txtName!!.text = ownerName.toString()
-                txtType!!.text = ticket.type
-                txtDesk!!.text = ticket.desk
-                txtCompany!!.text = ticket.company
-                txtMail!!.text = ticket.mail
-
-                txtDuration!!.text =  com.breizhcamp.ticket.utils.daysOfWeek(ticket.days)
-
-                ticketView!!.visibility = View.VISIBLE
-                progressBar!!.visibility = View.GONE
+                updateTicketView(ticket)
 
             } else {
                 // ticket not found
@@ -160,7 +132,32 @@ class TicketResultActivity : AppCompatActivity() {
             showNoTicket()
             Toast.makeText(applicationContext, "Error occurred. Check your LogCat for full report", Toast.LENGTH_SHORT).show()
         }
+    }
 
+    private fun updateTicketView(ticket: Ticket) {
+        firstname.text = ticket!!.lastName
+        lastname.text = ticket!!.firstName
+        type.text = ticket.type
+        desk.text = ticket.desk
+        company.text = ticket.company
+        mail.text = ticket.mail
+        identifier.text = ticket.identifier
+        duration.text = daysOfWeek(ticket.days)
+
+        if (ticket.checkin.isNullOrEmpty()){
+            checkin.text = this.resources.getString(R.string.first_checkin)
+            checkin!!.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
+        } else {
+            val recordingTicket = StringBuilder()
+            recordingTicket.append(this.resources.getString(R.string.last_checkin))
+            recordingTicket.append(" ")
+            recordingTicket.append(checkinDay(ticket.checkin))
+            checkin.text = recordingTicket.toString()
+            checkin.setTextColor(ContextCompat.getColor(this, android.R.color.holo_orange_dark))
+        }
+
+        ticketView.visibility = View.VISIBLE
+        progressBar.visibility = View.GONE
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
