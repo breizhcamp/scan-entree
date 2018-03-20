@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Scan Ticket</string>
+    <string name="home_button">Scanner</string>
+    <string name="home_details">Scanner le QR pour accéder aux informations du billet</string>
+    <string name="title_activity_ticket">Billet enregistré </string>
+    <string name="lbl_office">BUREAU</string>
+    <string name="lbl_duration">DUREE</string>
+    <string name="lbl_company">SOCIETE</string>
+    <string name="mail">MAIL</string>
+    <string name="msg_no_ticket_found">Nom de Zeus ! Si mes calculs sont bons, nous devrions... Marty, tente de scanner de nouveau le billet !</string>
+    <string name="lbl_scan_activity">Scanner le QR Code</string>
+    <string name="next_button">Nouveau scan</string>
+    <string name="first_checkin">Le badge est scanné pour la première fois</string>
+    <string name="last_checkin">Enregistré le </string>
+    <string name="error_websites_entry">Aucune url server renseignée</string>
+    <string name="url">URL</string>
+
+
+
+</resources>
