@@ -2,37 +2,26 @@ package com.breizhcamp.ticket.model
 
 import com.google.gson.annotations.SerializedName
 
-class Ticket {
+data class Ticket (
     @SerializedName("nom")
-    var lastName: String? = null
-        internal set
+    val lastName: String?,
 
     @SerializedName("prenom")
-    var firstName: String? = null
-        internal set
+    val firstName: String? = null,
 
-    var desk: String? = null
-        internal set
+    val desk: String?,
 
-    var days: Array<String>? = null
-        internal set
+    val days: Array<String>?,
 
-    var type: String? = null
-        internal set
+    val type: String?,
 
-    var mail: String? = null
-        internal set
+    val mail: String?,
 
     @SerializedName("societe")
-    var company: String? = null
-        internal set
+    val company: String?,
 
-    var checkin: String? = null
-        internal set
+    val checkin: String?,
 
     @SerializedName("id")
-    var identifier: String? = null
-        internal set
-
-
-}
+    val identifier: String? = null
+)

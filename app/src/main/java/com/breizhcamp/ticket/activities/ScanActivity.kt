@@ -29,9 +29,6 @@ class ScanActivity : AppCompatActivity(), BarcodeReader.BarcodeReaderListener {
 
     override fun onScanned(barcode: Barcode) {
 
-        // playing barcode reader beep sound
-        barcodeReader?.playBeep()
-
         // ticket details activity by passing barcode
         val intent = Intent(this@ScanActivity, TicketResultActivity::class.java)
         intent.putExtra(AppConfig.CODE, barcode.displayValue)

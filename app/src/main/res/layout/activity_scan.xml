@@ -11,7 +11,7 @@
         android:name="info.androidhive.barcode.BarcodeReader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:auto_focus="true"
+        app:auto_focus="false"
         app:use_flash="false" />
 
     <info.androidhive.barcode.ScannerOverlay
