@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="webServicesEntryPoint" type="string">http://breizhcamp.thomazo.info/entree/s</item>
+    <item name="webServicesEntryPoint" type="string">http://10.42.0.1:3000/s</item>
 
 </resources>
