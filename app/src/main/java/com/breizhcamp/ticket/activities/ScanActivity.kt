@@ -21,6 +21,8 @@ class ScanActivity : AppCompatActivity(), BarcodeReader.BarcodeReaderListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan)
 
+        // playing barcode reader beep sound
+        barcodeReader?.playBeep()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         // fetch the barcode reader instance
