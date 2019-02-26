@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
         android:maxHeight="220dp"
-        android:src="@drawable/breizh_to_the_camp"
+        android:src="@drawable/breizh_to_the_camp_2019"
         />
 
     <LinearLayout
@@ -93,6 +93,6 @@
         android:layout_height="150dp"
         android:layout_below="@+id/scanButton"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/breizhcamp" />
+        android:src="@drawable/breizhcamp_2019" />
 
 </RelativeLayout>

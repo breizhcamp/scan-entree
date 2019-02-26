@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/barcode_scanner"
         android:name="info.androidhive.barcode.BarcodeReader"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
         app:auto_focus="true"
         app:use_flash="false" />
