@@ -125,7 +125,7 @@
             android:layout_height="@dimen/img_poster_height"
             android:layout_marginBottom="@dimen/activity_margin"
             android:layout_marginTop="@dimen/activity_margin"
-            android:src="@drawable/breizh_to_the_camp" />
+            android:src="@drawable/breizh_to_the_camp_2019" />
 
         <TextView
             android:id="@+id/checkin"

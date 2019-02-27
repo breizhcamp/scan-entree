@@ -30,6 +30,8 @@ import com.breizhcamp.ticket.additions.CustomRequest
 import com.breizhcamp.ticket.model.Ticket
 import com.breizhcamp.ticket.utils.RequestUtils
 import kotlinx.android.synthetic.main.content_ticket_details.*
+import android.os.Handler
+
 
 class TicketResultActivity : AppCompatActivity() {
 
@@ -50,12 +52,19 @@ class TicketResultActivity : AppCompatActivity() {
             finish()
         }
 
-        findViewById<View>(R.id.btn_next).setOnClickListener { this.onBackPressed() }
+        findViewById<View>(com.breizhcamp.ticket.R.id.btn_next).setOnClickListener { this.onBackPressed() }
 
         // search the barcode
         searchBarcode(barcode)
+
+        Handler().postDelayed(Runnable { refreshScan() }, 10000)
     }
 
+
+    private fun refreshScan() {
+        // ticket details activity by passing barcode
+        this.onBackPressed()
+    }
 
     /**
      * Retrieve ticket info from barcode by calling POST request
