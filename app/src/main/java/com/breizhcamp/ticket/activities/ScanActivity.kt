@@ -20,16 +20,19 @@ class ScanActivity : AppCompatActivity(), BarcodeReader.BarcodeReaderListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan)
-
-        // playing barcode reader beep sound
-        barcodeReader?.playBeep()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         // fetch the barcode reader instance
         barcodeReader = supportFragmentManager.findFragmentById(R.id.barcode_scanner) as BarcodeReader
     }
 
+    override fun onResume() {
+        super.onResume()
+        barcodeReader?.resumeScanning()
+    }
+
     override fun onScanned(barcode: Barcode) {
+        barcodeReader?.pauseScanning()
 
         // ticket details activity by passing barcode
         val intent = Intent(this@ScanActivity, TicketResultActivity::class.java)

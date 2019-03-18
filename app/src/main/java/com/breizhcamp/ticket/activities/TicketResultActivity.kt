@@ -57,14 +57,14 @@ class TicketResultActivity : AppCompatActivity() {
         // search the barcode
         searchBarcode(barcode)
 
-        Handler().postDelayed(Runnable { refreshScan() }, 10000)
+        //Handler().postDelayed(Runnable { refreshScan() }, 10000)
     }
 
 
-    private fun refreshScan() {
-        // ticket details activity by passing barcode
-        this.onBackPressed()
-    }
+//    private fun refreshScan() {
+//        // ticket details activity by passing barcode
+//        this.onBackPressed()
+//    }
 
     /**
      * Retrieve ticket info from barcode by calling POST request

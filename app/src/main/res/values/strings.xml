@@ -7,7 +7,7 @@
     <string name="lbl_duration">DUREE</string>
     <string name="lbl_company">SOCIETE</string>
     <string name="mail">MAIL</string>
-    <string name="msg_no_ticket_found">Nom de Zeus ! Si mes calculs sont bons, nous devrions... Marty, tente de scanner de nouveau le billet !</string>
+    <string name="msg_no_ticket_found">Le billet est inconnu, direction l\'accueil !</string>
     <string name="lbl_scan_activity">Scanner le QR Code</string>
     <string name="next_button">Nouveau scan</string>
     <string name="first_checkin">Le badge est scanné pour la première fois</string>
